@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Routes } from "react-router-dom"
 import '../App.css';
-import Clients from './Clients';
-import Policies from './Policies';
+import ClientsList from './ClientsList';
+import PoliciesList from './PoliciesList';
 import NavBar from './NavBar';
 import Home from './Home';
 
@@ -12,8 +12,8 @@ export default function App() {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/clients" element={<Clients />} />
-        <Route path="/policies" element={<Policies />} />
+        <Route path="/clients" element={<ClientsList />} />
+        <Route path="/policies" element={<PoliciesList />} />
       </Routes>
       
     </div>
