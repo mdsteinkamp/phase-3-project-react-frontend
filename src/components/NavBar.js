@@ -7,8 +7,8 @@ export default function NavBar() {
   return(
     <span className="App">
       <NavLink to="/home">Home</NavLink>
-      <NavLink to="/addclient">Add a Client</NavLink>
-      <NavLink to="/addpolicy">Add a Policy</NavLink>
+      <NavLink to="/clients">View Clients</NavLink>
+      <NavLink to="/policies">View Policies</NavLink>
     </span>
   )
 }
