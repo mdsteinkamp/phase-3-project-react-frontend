@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function PoliciesList() {
   const [idSearch, setIdSearch] = useState("")
   const [lastNameSearch, setLastNameSearch] = useState("")
+  const [carrierSearch, setCarrierSearch] = useState("")
 
   function handleIdSubmit(e) {
     e.preventDefault()
@@ -13,10 +14,18 @@ export default function PoliciesList() {
 
   function handleNameSubmit(e) {
     e.preventDefault()
-    fetch(`http://localhost:9292/policies/${lastNameSearch}`)
+    fetch(`http://localhost:9292/clients/${lastNameSearch}`)
     .then(resp => resp.json())
     .then(policy => console.log(policy))
   }
+
+  function handleCarrierSubmit(e) {
+    e.preventDefault()
+    fetch(`http://localhost:9292/clients/${carrierSearch}`)
+    .then(resp => resp.json())
+    .then(policy => console.log(policy))
+  }
+  
   
   return (
     <div>
@@ -42,6 +51,19 @@ export default function PoliciesList() {
         />
         <button>Search</button>
       </form>
+
+      {/* not working  */}
+      <form onSubmit={handleCarrierSubmit}>
+        <input 
+          type="text"
+          name="search"
+          placeholder="Search by carrier..."
+          value={carrierSearch}
+          onChange={e => setCarrierSearch(e.target.value)}
+        />
+        <button>Search</button>
+      </form>
+
 
 
     </div>
