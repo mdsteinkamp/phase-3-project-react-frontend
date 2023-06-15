@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddPolicyForm() {
+export default function Policies() {
   
   return (
     <div>

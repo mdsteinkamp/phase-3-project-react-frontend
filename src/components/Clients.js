@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddClientForm() {
+export default function Clients() {
 
   return (
     <>
