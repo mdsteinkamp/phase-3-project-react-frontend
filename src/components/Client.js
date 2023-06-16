@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import { Link } from "react-router-dom"
 
 export default function Client({ client }) {
 
@@ -8,6 +9,8 @@ export default function Client({ client }) {
       <p>Date of Birth: {client.date_of_birth}</p>
       <p>State: {client.state}</p>
       <p>Spouse: {client.spouse_name}</p>
+      <Link to={`${client.id}`} client={client}>View Client Policies</Link>
+
     </>
   )
 }

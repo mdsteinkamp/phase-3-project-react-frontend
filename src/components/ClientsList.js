@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Client from './Client'
 
-export default function ClientsList() {
-  const [clients, setClients] = useState([])
+export default function ClientsList({ clients }) {
+  // const [clients, setClients] = useState([])
 
-  useEffect(() => {
-    fetch("http://localhost:9292/clients")
-      .then(resp => resp.json())
-      .then(clients => setClients(clients))
-  }, [])
+  // useEffect(() => {
+  //   fetch("http://localhost:9292/clients")
+  //     .then(resp => resp.json())
+  //     .then(clients => setClients(clients))
+  // }, [])
 
   return (
     <>
