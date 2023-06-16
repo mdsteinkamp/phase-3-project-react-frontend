@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Client from './Client'
+import React from "react";
+import { Link } from "react-router-dom"
 
 export default function ClientsList({ clients }) {
-  // const [clients, setClients] = useState([])
-
-  // useEffect(() => {
-  //   fetch("http://localhost:9292/clients")
-  //     .then(resp => resp.json())
-  //     .then(clients => setClients(clients))
-  // }, [])
 
   return (
     <>
       <h1>Client List</h1>
       <ul>
         {clients.map(client => (
-          <Client key={client.id} client={client} />
+          <div>
+            <h3>{client.first_name} {client.last_name}</h3>
+            <p>Date of Birth: {client.date_of_birth}</p>
+            <p>State: {client.state}</p>
+            <p>Spouse: {client.spouse_name}</p>
+            <Link to={`${client.id}`}>View Client Policies</Link>
+            </div>
         ))}
       </ul>
     </>
