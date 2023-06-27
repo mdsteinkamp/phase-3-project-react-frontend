@@ -15,10 +15,14 @@ export default function ClientPolicyPage({ clients }) {
 
   if (!client) return <h2>Loading Client Info...</h2>
 
+  console.log(client.policies)
 
   return (
     <div>
       <h2>{client.first_name} {client.last_name}</h2>
+      <ul>{client.policies.map(policy => (
+        <h2>{policy.carrier}</h2>
+      ))}</ul>
     </div>
   )
 }
