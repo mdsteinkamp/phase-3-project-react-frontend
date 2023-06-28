@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom"
 import ClientsList from './ClientsList';
-import PoliciesList from './PoliciesList';
+import AddClient from './AddClient';
 import ClientPolicyPage from './ClientPolicyPage';
 import NavBar from './NavBar';
 import Home from './Home';
@@ -22,7 +22,7 @@ export default function App({}) {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/clients" element={<ClientsList clients={clients} />} />
-        <Route path="/policies" element={<PoliciesList />} />
+        <Route path="/addclient" element={<AddClient />} />
         <Route path="/clients/:id" element={<ClientPolicyPage clients={clients} />} />
       </Routes>
       
