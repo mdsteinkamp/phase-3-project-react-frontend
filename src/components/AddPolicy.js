@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+
 
 export default function AddPolicy() {
+  const { id } = useParams()
+  const [client, setClient] = useState(null)
   const [formData, setFormData] = useState({
     carrier: "",
     product:"",
@@ -11,6 +15,13 @@ export default function AddPolicy() {
     purpose: "",
     rate_class: "",
   })
+
+  useEffect(() => {
+    fetch(`http://localhost:9292/clients/${id}`)
+      .then(resp => resp.json())
+      .then((client) => setClient(client))
+  }, []);
+
 
   function handleChange(e) {
     const name = e.target.name
@@ -33,10 +44,13 @@ export default function AddPolicy() {
       .then(resp => resp.json())
       .then(newPolicy => console.log(newPolicy))
   }
+
+  if (!client) return <h2>Loading Client Info...</h2>
+
   
   return (
     <div>
-      <h1>Add Policy</h1>
+      <h1>Add Policy for {client.first_name} {client.last_name}</h1>
       <form onSubmit={handleSubmit}>
         <input 
           type="text"
