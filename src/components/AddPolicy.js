@@ -14,6 +14,7 @@ export default function AddPolicy() {
     conversion_expiry: "",
     purpose: "",
     rate_class: "",
+    client_id: id,
   })
 
   useEffect(() => {
@@ -32,9 +33,10 @@ export default function AddPolicy() {
     })
   }
 
+
   function handleSubmit(e) {
     e.preventDefault()
-    fetch("http://localhost:9292/clients", {
+    fetch("http://localhost:9292/policies", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -121,3 +123,16 @@ export default function AddPolicy() {
     </div>
   )
 }
+
+// function handleSubmit(e) {
+//   e.preventDefault()
+//   fetch("http://localhost:9292/clients", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(formData)
+//   })
+//     .then(resp => resp.json())
+//     .then(newPolicy => console.log(newPolicy))
+// }

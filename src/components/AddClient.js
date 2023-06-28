@@ -17,6 +17,7 @@ export default function AddClient({ onAddClient }) {
       [name]: value,
     })
   }
+  console.log(formData)
 
   function handleSubmit(e) {
     e.preventDefault()
