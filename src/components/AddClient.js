@@ -18,11 +18,15 @@ export default function AddClient() {
     })
   }
 
-  console.log(formData)
-
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(formData)
+    fetch("http://localhost:9292/clients", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    })
   }
   
   return (
@@ -36,6 +40,7 @@ export default function AddClient() {
           value={formData.firstName}
           onChange={handleChange}
         />
+        <br />
         <input 
           type="text"
           name="lastName"
@@ -43,6 +48,7 @@ export default function AddClient() {
           value={formData.lastName}
           onChange={handleChange}
         />
+        <br />
         <input 
           type="date"
           name="dateOfBirth"
@@ -50,6 +56,7 @@ export default function AddClient() {
           value={formData.dateOfBirth}
           onChange={handleChange}
         />
+        <br />
         <input 
           type="text"
           name="state"
@@ -57,6 +64,7 @@ export default function AddClient() {
           value={formData.state}
           onChange={handleChange}
         />
+        <br />
         <input 
           type="text"
           name="spouseName"
