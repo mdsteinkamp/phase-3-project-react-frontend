@@ -21,7 +21,13 @@ export default function ClientPolicyPage({ clients }) {
     <div>
       <h2>{client.first_name} {client.last_name}</h2>
       <ul>{client.policies.map(policy => (
-        <h2>{policy.carrier}</h2>
+        <>
+          <h2>{policy.carrier} #{policy.policy_number}</h2>
+          <p>Policy Date: {policy.policy_date}</p>
+          <p>Face Amount: ${policy.face_amount.toLocaleString()}</p>
+          <p>Product: {policy.product}</p>
+          <p>Conversion Expires: {policy.conversion_expiry}</p>
+        </>
       ))}</ul>
     </div>
   )
