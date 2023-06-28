@@ -5,8 +5,6 @@ export default function ClientPolicyPage({ clients }) {
   const { id } = useParams()
   const [client, setClient] = useState(null)
 
-  // const client = clients.find(client => cliet.id === parseInt(id))
-
   useEffect(() => {
     fetch(`http://localhost:9292/clients/${id}`)
       .then(resp => resp.json())
