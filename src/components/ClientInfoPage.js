@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
 
-export default function ClientInfoPage({ client }) {
+export default function ClientInfoPage({ client, onDeleteClient }) {
 
   function handleDeleteClick() {
-    console.log(client.id)
     fetch(`http://localhost:9292/clients/${client.id}`, {
       method: "DELETE",
     })
-      .then(resp => resp.json)
+      .then(resp => resp.json())
+      .then(deletedClient => onDeleteClient(deletedClient))
+
   }
 
   return (

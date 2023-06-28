@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 export default function ClientPolicyPage({ clients }) {
   const { id } = useParams()
@@ -18,6 +18,8 @@ export default function ClientPolicyPage({ clients }) {
   return (
     <div>
       <h2>{client.first_name} {client.last_name}</h2>
+      <Link to={`${client.id}/addpolicy`}>Add Policy</Link>
+
       <ul>{client.policies.map(policy => (
         <div key={policy.policy_number}>
           <h2>{policy.carrier} #{policy.policy_number}</h2>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function AddClient() {
+export default function AddClient({ onAddClient }) {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name:"",
@@ -27,6 +27,8 @@ export default function AddClient() {
       },
       body: JSON.stringify(formData)
     })
+      .then(resp => resp.json())
+      .then(newClient => onAddClient(newClient))
   }
   
   return (
@@ -78,11 +80,3 @@ export default function AddClient() {
     </div>
   )
 }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault()
-  //   fetch(`http://localhost:9292/policies/${id}`)
-  //   .then(resp => resp.json())
-  //   .then(policy => console.log(policy))
-  // }
-  
