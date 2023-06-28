@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 export default function AddClient() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName:"",
-    dateOfBirth:"",
+    first_name: "",
+    last_name:"",
+    date_of_birth:"",
     state: "",
-    spouseName: ""
+    spouse_name: ""
   })
 
   function handleChange(e) {
@@ -35,7 +35,7 @@ export default function AddClient() {
       <form onSubmit={handleSubmit}>
         <input 
           type="text"
-          name="firstName"
+          name="first_name"
           placeholder="First Name"
           value={formData.firstName}
           onChange={handleChange}
@@ -43,7 +43,7 @@ export default function AddClient() {
         <br />
         <input 
           type="text"
-          name="lastName"
+          name="last_name"
           placeholder="Last Name"
           value={formData.lastName}
           onChange={handleChange}
@@ -51,7 +51,7 @@ export default function AddClient() {
         <br />
         <input 
           type="date"
-          name="dateOfBirth"
+          name="date_of_birth"
           placeholder="Date of Birth"
           value={formData.dateOfBirth}
           onChange={handleChange}
@@ -67,7 +67,7 @@ export default function AddClient() {
         <br />
         <input 
           type="text"
-          name="spouseName"
+          name="spouse_name"
           placeholder="Spouse Name"
           value={formData.spouseName}
           onChange={handleChange}
