@@ -20,7 +20,7 @@ export default function AddPolicy() {
     fetch(`http://localhost:9292/clients/${id}`)
       .then(resp => resp.json())
       .then((client) => setClient(client))
-  }, []);
+  }, [id]);
 
 
   function handleChange(e) {
