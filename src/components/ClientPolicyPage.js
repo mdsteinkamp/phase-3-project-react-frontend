@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 
 export default function ClientPolicyPage({ policy }) {
   const [editPolicy, setEditPolicy] = useState(false)
+  const [currentPolicy, setCurrentPolicy] = useState(policy)
   const [formData, setFormData] = useState({
-    carrier: policy.carrier,
-    product: policy.product,
-    policy_date: policy.policy_date,
-    policy_number: policy.policy_number,
-    face_amount: policy.face_amount,
-    conversion_expiry: policy.conversion_expiry,
-    purpose: policy.purpose,
-    rate_class: policy.rate_class,
-    active: policy.active,
-    client_id: policy.client_id,
+    carrier: currentPolicy.carrier,
+    product: currentPolicy.product,
+    policy_date: currentPolicy.policy_date,
+    policy_number: currentPolicy.policy_number,
+    face_amount: currentPolicy.face_amount,
+    conversion_expiry: currentPolicy.conversion_expiry,
+    purpose: currentPolicy.purpose,
+    rate_class: currentPolicy.rate_class,
+    active: currentPolicy.active,
+    client_id: currentPolicy.client_id,
   })
 
   function handleEditButton() {
@@ -30,7 +31,7 @@ export default function ClientPolicyPage({ policy }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    fetch(`http://localhost:9292/policies/${policy.id}`, {
+    fetch(`http://localhost:9292/policies/${currentPolicy.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -38,18 +39,18 @@ export default function ClientPolicyPage({ policy }) {
       body: JSON.stringify(formData)
     })
       .then(resp => resp.json())
-      .then(updatedPolicy => console.log(updatedPolicy))
+      .then(updatedPolicy => setCurrentPolicy(updatedPolicy))
 
   }
 
   return (
     <div>
-      <h2>{policy.carrier} #{policy.policy_number}</h2>
-      <p>Policy Date: {policy.policy_date}</p>
-      <p>Face Amount: ${policy.face_amount.toLocaleString()}</p>
-      <p>Product: {policy.product}</p>
-      <p>Conversion Expires: {policy.conversion_expiry}</p>
-      <p>Active: {policy.active ? "In Force" : "Not In Force"}</p>
+      <h2>{currentPolicy.carrier} #{currentPolicy.policy_number}</h2>
+      <p>Policy Date: {currentPolicy.policy_date}</p>
+      <p>Face Amount: ${currentPolicy.face_amount.toLocaleString()}</p>
+      <p>Product: {currentPolicy.product}</p>
+      <p>Conversion Expires: {currentPolicy.conversion_expiry}</p>
+      <p>Active: {currentPolicy.active ? "In Force" : "Not In Force"}</p>
       <button onClick={handleEditButton}>Edit Policy</button>
       <div>
         {!editPolicy ? null : 
