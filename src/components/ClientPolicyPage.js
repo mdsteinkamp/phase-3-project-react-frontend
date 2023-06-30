@@ -50,7 +50,7 @@ export default function ClientPolicyPage({ policy }) {
       <p>Face Amount: ${currentPolicy.face_amount.toLocaleString()}</p>
       <p>Product: {currentPolicy.product}</p>
       <p>Conversion Expires: {currentPolicy.conversion_expiry}</p>
-      <p>Active: {currentPolicy.active ? "In Force" : "Not In Force"}</p>
+      <p>Active: {currentPolicy.active}</p>
       <button onClick={handleEditButton}>Edit Policy</button>
       <div>
         {!editPolicy ? null : 
