@@ -14,8 +14,11 @@ export default function AddPolicy() {
     conversion_expiry: "",
     purpose: "",
     rate_class: "",
+    active: "",
     client_id: id,
   })
+
+  console.log(formData)
 
   useEffect(() => {
     fetch(`http://localhost:9292/clients/${id}`)
@@ -117,22 +120,17 @@ export default function AddPolicy() {
           value={formData.rate_class}
           onChange={handleChange}
         />
+        <br />
+        <input 
+          type="text"
+          name="active"
+          placeholder="In Force/Not In Force"
+          value={formData.active}
+          onChange={handleChange}
+        />
         <button>Add</button>
       </form>
 
     </div>
   )
 }
-
-// function handleSubmit(e) {
-//   e.preventDefault()
-//   fetch("http://localhost:9292/clients", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(formData)
-//   })
-//     .then(resp => resp.json())
-//     .then(newPolicy => console.log(newPolicy))
-// }
