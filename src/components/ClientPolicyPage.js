@@ -28,8 +28,6 @@ export default function ClientPolicyPage({ policy }) {
     })
   }
 
-  console.log(formData)
-
   function handleSubmit(e) {
     e.preventDefault()
     fetch(`http://localhost:9292/policies/${policy.id}`, {

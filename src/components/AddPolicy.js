@@ -18,8 +18,6 @@ export default function AddPolicy() {
     client_id: id,
   })
 
-  console.log(formData)
-
   useEffect(() => {
     fetch(`http://localhost:9292/clients/${id}`)
       .then(resp => resp.json())
