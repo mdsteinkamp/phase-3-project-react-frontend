@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Route, Routes } from "react-router-dom"
 import ClientsList from './ClientsList';
 import AddClient from './AddClient';
-import ClientPolicyPage from './ClientPolicyPage';
+import ClientPolicyPage from './ClientPolicyList';
 import AddPolicy from './AddPolicy';
 import NavBar from './NavBar';
 import Home from './Home';
