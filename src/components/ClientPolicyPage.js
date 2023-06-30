@@ -9,6 +9,7 @@ export default function ClientPolicyPage({ policy }) {
           <p>Face Amount: ${policy.face_amount.toLocaleString()}</p>
           <p>Product: {policy.product}</p>
           <p>Conversion Expires: {policy.conversion_expiry}</p>
+          <p>Active: {policy.active ? "In Force" : "Not In Force"}</p>
     </div>
   )
 }
