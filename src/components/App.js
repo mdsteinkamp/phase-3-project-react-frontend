@@ -21,12 +21,7 @@ export default function App({}) {
   }, [])
 
   function handleAddClient(newClient) {
-    fetch("http://localhost:9292/clients")
-    .then(resp => resp.json())
-    .then(clients => {
-      setClients(clients)
-      navigate("/clients")
-    })
+    setClients([...clients, newClient])
   }
 
   function handleDeleteClient() {
