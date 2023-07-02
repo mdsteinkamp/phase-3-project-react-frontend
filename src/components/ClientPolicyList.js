@@ -14,6 +14,12 @@ export default function ClientPolicyList() {
 
   if (!client) return <h2>Loading Client Info...</h2>
 
+  console.log(client.policies)
+
+  console.log(client.policies.forEach(element => {
+    console.log(element.face_amount)
+  }))
+
   return (
     <div>
       <h2>{client.first_name} {client.last_name}</h2>
@@ -22,6 +28,8 @@ export default function ClientPolicyList() {
       <ul>{client.policies.map(policy => (
           <ClientPolicyPage key={policy.policy_number} policy={policy} />
       ))}</ul>
+
+      <h2>Total Insurance: {client.policies.map(p => p.face_amount).reduce((a, c) => a + c, 0)}</h2>
     </div>
   )
 }
