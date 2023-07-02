@@ -25,13 +25,16 @@ export default function App({}) {
   }
 
   function handleDeleteClient(deletedClient) {
-    console.log(deletedClient)
     const updatedClients = clients.filter(client => client.id !== deletedClient.id)
     setClients(updatedClients)
   }
 
   function searchClients(search) {
     setSearchInput(search)
+  }
+
+  function handleClearSearch() {
+    setClients(clients)
   }
 
   const shownClients = searchInput !== "" ? clients.filter(client =>
@@ -42,7 +45,7 @@ export default function App({}) {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/clients" element={<ClientsList clients={shownClients} onDeleteClient={handleDeleteClient} onSearch={searchClients} />} />
+        <Route path="/clients" element={<ClientsList clients={shownClients} onDeleteClient={handleDeleteClient} onSearch={searchClients} onClearSearch={handleClearSearch}/>} />
         <Route path="/addclient" element={<AddClient onAddClient={handleAddClient}/>} />
         <Route path="/clients/:id" element={<ClientPolicyPage clients={clients} />} />
         <Route path="/clients/:id/:id/addpolicy" element={<AddPolicy />} />

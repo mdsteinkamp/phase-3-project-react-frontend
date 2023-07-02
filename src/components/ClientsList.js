@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import ClientInfoPage from "./ClientInfoPage";
 
-export default function ClientsList({ clients, onDeleteClient, onSearch }) {
+export default function ClientsList({ clients, onDeleteClient, onSearch, onClearSearch }) {
   const [search, setSearch] = useState("")
 
   function handleDeleteClient(deletedClient) {
@@ -12,6 +12,10 @@ export default function ClientsList({ clients, onDeleteClient, onSearch }) {
   function handleSearch(e) {
     setSearch(e.target.value)
     onSearch(search)
+  }
+
+  function handleClearSearch() {
+    onClearSearch()
   }
 
   return (
@@ -25,6 +29,8 @@ export default function ClientsList({ clients, onDeleteClient, onSearch }) {
         value={search}
         onChange={(e) => handleSearch(e)}
       />
+      <br />
+      <button onSubmit={handleClearSearch}>Clear Search</button>
     </form>
       <ul>
         {clients.map(client => (
