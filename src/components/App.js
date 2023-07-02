@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import ClientsList from './ClientsList';
 import AddClient from './AddClient';
 import ClientPolicyPage from './ClientPolicyList';
@@ -13,7 +13,6 @@ export default function App({}) {
   const [clients, setClients] = useState([])
   const [searchInput, setSearchInput] = useState("")
 
-  // const navigate = useNavigate()
 
   useEffect(() => {
     fetch("http://localhost:9292/clients")

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddClient({ onAddClient }) {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ export default function AddClient({ onAddClient }) {
     state: "",
     spouse_name: ""
   })
+
+  const navigate = useNavigate()
 
   function handleChange(e) {
     const name = e.target.name
@@ -28,7 +31,10 @@ export default function AddClient({ onAddClient }) {
       body: JSON.stringify(formData)
     })
       .then(resp => resp.json())
-      .then(newClient => onAddClient(newClient))
+      .then(newClient => {
+        onAddClient(newClient)
+        navigate('/clients')
+      })
   }
   
   return (
