@@ -34,7 +34,7 @@ export default function App({}) {
   }
 
   function handleClearSearch() {
-    setSearchInput()
+    setSearchInput("")
   }
 
   const shownClients = searchInput !== "" ? clients.filter(client =>
