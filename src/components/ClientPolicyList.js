@@ -13,13 +13,7 @@ export default function ClientPolicyList() {
   }, [id]);
 
   if (!client) return <h2>Loading Client Info...</h2>
-
-  console.log(client.policies)
-
-  console.log(client.policies.forEach(element => {
-    console.log(element.face_amount)
-  }))
-
+  
   return (
     <div>
       <h2>{client.first_name} {client.last_name}</h2>

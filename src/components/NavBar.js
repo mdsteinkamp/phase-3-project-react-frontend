@@ -9,6 +9,7 @@ export default function NavBar() {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/clients">View Clients</NavLink>
       <NavLink to="/addclient">Add Client</NavLink>
+      <NavLink to="/insurancetotal">Total Insurance</NavLink>
     </span>
   )
 }

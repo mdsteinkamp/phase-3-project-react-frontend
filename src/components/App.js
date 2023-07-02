@@ -6,6 +6,7 @@ import ClientPolicyPage from './ClientPolicyList';
 import AddPolicy from './AddPolicy';
 import NavBar from './NavBar';
 import Home from './Home';
+import InsuranceTotal from './InsuranceTotal';
 import '../App.css';
 
 export default function App({}) {
@@ -49,6 +50,7 @@ export default function App({}) {
         <Route path="/addclient" element={<AddClient onAddClient={handleAddClient}/>} />
         <Route path="/clients/:id" element={<ClientPolicyPage clients={clients} />} />
         <Route path="/clients/:id/:id/addpolicy" element={<AddPolicy />} />
+        <Route path="/insurancetotal" element={<InsuranceTotal />} />
       </Routes>
     </div>
   );
