@@ -13,7 +13,7 @@ export default function App({}) {
   const [clients, setClients] = useState([])
   const [searchInput, setSearchInput] = useState("")
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   useEffect(() => {
     fetch("http://localhost:9292/clients")
@@ -35,7 +35,7 @@ export default function App({}) {
   }
 
   function handleClearSearch() {
-    setClients(clients)
+    setSearchInput()
   }
 
   const shownClients = searchInput !== "" ? clients.filter(client =>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ClientPolicyPage({ policy }) {
+export default function ClientPolicyPage({ policy, onUpdatePolicy }) {
   const [editPolicy, setEditPolicy] = useState(false)
   const [currentPolicy, setCurrentPolicy] = useState(policy)
   const [formData, setFormData] = useState({
@@ -39,7 +39,10 @@ export default function ClientPolicyPage({ policy }) {
       body: JSON.stringify(formData)
     })
       .then(resp => resp.json())
-      .then(updatedPolicy => setCurrentPolicy(updatedPolicy))
+      .then(updatedPolicy => {
+        setCurrentPolicy(updatedPolicy)
+        onUpdatePolicy(updatedPolicy)
+      })
 
   }
 
