@@ -24,10 +24,10 @@ export default function App({}) {
     setClients([...clients, newClient])
   }
 
-  function handleDeleteClient() {
-    fetch("http://localhost:9292/clients")
-      .then(resp => resp.json())
-      .then(clients => setClients(clients))
+  function handleDeleteClient(deletedClient) {
+    console.log(deletedClient)
+    const updatedClients = clients.filter(client => client.id !== deletedClient.id)
+    setClients(updatedClients)
   }
 
   function searchClients(search) {
