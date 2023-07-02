@@ -9,11 +9,16 @@ export default function InsuranceTotal() {
       .then(total => setInsuranceTotal(total))
   }, [])
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
+
   return (
 
 
     <div>
-      <h2>Total Insurance: ${insuranceTotal} </h2>
+      <h2>Total Insurance: {formatter.format(insuranceTotal)} </h2>
     </div>
   )
 }
