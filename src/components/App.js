@@ -39,7 +39,6 @@ export default function App({}) {
   }
 
   function handleUpdatePolicy(updatedPolicy, id) {
-    const updatedClients = [...clients]
     const clientWithUpdatedPolicy = clients.find(client => client.id === parseInt(id))
     const newPolicies = clientWithUpdatedPolicy.policies.map(policy => {
       if (policy.id === updatedPolicy.id) {
@@ -47,7 +46,7 @@ export default function App({}) {
       } else return policy
     })
     clientWithUpdatedPolicy.policies = newPolicies
-    updatedClients.map(client => {
+    const updatedClients = clients.map(client => {
       if (client.id === clientWithUpdatedPolicy.id) {
         return clientWithUpdatedPolicy
       } else return client
