@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useParams } from "react-router-dom"
 
 
-export default function AddPolicy() {
+export default function AddPolicy({ clients, onAddPolicy }) {
   const { id } = useParams()
   const [client, setClient] = useState(null)
   const [formData, setFormData] = useState({
@@ -18,11 +18,8 @@ export default function AddPolicy() {
     client_id: id,
   })
 
-  useEffect(() => {
-    fetch(`http://localhost:9292/clients/${id}`)
-      .then(resp => resp.json())
-      .then((client) => setClient(client))
-  }, [id]);
+  const clientFromFind = clients.find(client => client.id === parseInt(id))
+  console.log(clientFromFind)
 
 
   function handleChange(e) {
@@ -34,6 +31,9 @@ export default function AddPolicy() {
     })
   }
 
+  function handleAddPolicy(newPolicy) {
+    onAddPolicy(newPolicy, id)
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -45,15 +45,14 @@ export default function AddPolicy() {
       body: JSON.stringify(formData)
     })
       .then(resp => resp.json())
-      .then(newPolicy => console.log(newPolicy))
+      .then(newPolicy => handleAddPolicy(newPolicy))
   }
 
-  if (!client) return <h2>Loading Client Info...</h2>
+  if (!clientFromFind) return <h2>Loading Client Info...</h2>
 
-  
   return (
     <div>
-      <h1>Add Policy for {client.first_name} {client.last_name}</h1>
+      <h1>Add Policy for {clientFromFind.first_name} {clientFromFind.last_name}</h1>
       <form onSubmit={handleSubmit}>
         <input 
           type="text"
