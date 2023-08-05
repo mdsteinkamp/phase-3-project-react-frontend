@@ -12,7 +12,7 @@ export default function ClientPolicyPage({ policy, onUpdatePolicy }) {
     conversion_expiry: currentPolicy.conversion_expiry,
     purpose: currentPolicy.purpose,
     rate_class: currentPolicy.rate_class,
-    active: currentPolicy.active,
+    status: currentPolicy.status,
     client_id: currentPolicy.client_id,
   })
 
@@ -53,7 +53,7 @@ export default function ClientPolicyPage({ policy, onUpdatePolicy }) {
       <p>Face Amount: ${currentPolicy.face_amount.toLocaleString()}</p>
       <p>Product: {currentPolicy.product}</p>
       <p>Conversion Expires: {currentPolicy.conversion_expiry}</p>
-      <p>Active: {currentPolicy.active}</p>
+      <p>Status: {currentPolicy.status}</p>
       <button onClick={handleEditButton}>Edit Policy</button>
       <div>
         {!editPolicy ? null : 
@@ -123,13 +123,11 @@ export default function ClientPolicyPage({ policy, onUpdatePolicy }) {
           onChange={handleChange}
         />
         <br />
-        <input 
-          type="text"
-          name="active"
-          placeholder="In Force/Not In Force"
-          value={formData.active}
-          onChange={handleChange}
-        />
+        <label>Status: </label>
+        <select name="status" onChange={handleChange}>
+          <option value="Active">Active</option>
+          <option value="Lapsed">Lapsed</option>
+        </select>
         <br />
         <button>Update</button>
       </form>

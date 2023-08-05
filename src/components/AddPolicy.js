@@ -14,7 +14,7 @@ export default function AddPolicy({ clients, onAddPolicy }) {
     conversion_expiry: "",
     purpose: "",
     rate_class: "",
-    status: "",
+    status: "Active",
     client_id: id,
   })
 
@@ -123,10 +123,9 @@ export default function AddPolicy({ clients, onAddPolicy }) {
         <br />
         <label>Status: </label>
         <select name="status" onChange={handleChange}>
-          <option value="active">Active</option>
-          <option value="lapsed">Lapsed</option>
+          <option value="Active">Active</option>
+          <option value="Lapsed">Lapsed</option>
         </select>
-
         <br />
         <button>Add</button>
       </form>
