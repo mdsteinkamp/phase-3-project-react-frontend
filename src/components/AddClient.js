@@ -80,6 +80,7 @@ export default function AddClient({ onAddClient }) {
           value={formData.spouseName}
           onChange={handleChange}
         />
+        <br />
         <button>Add</button>
       </form>
 

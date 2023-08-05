@@ -14,12 +14,12 @@ export default function AddPolicy({ clients, onAddPolicy }) {
     conversion_expiry: "",
     purpose: "",
     rate_class: "",
-    active: "",
+    status: "",
     client_id: id,
   })
 
   const clientFromFind = clients.find(client => client.id === parseInt(id))
-  console.log(clientFromFind)
+  console.log(formData)
 
 
   function handleChange(e) {
@@ -32,6 +32,7 @@ export default function AddPolicy({ clients, onAddPolicy }) {
   }
 
   function handleAddPolicy(newPolicy) {
+    console.log(newPolicy)
     onAddPolicy(newPolicy, id)
   }
 
@@ -70,6 +71,7 @@ export default function AddPolicy({ clients, onAddPolicy }) {
           onChange={handleChange}
         />
         <br />
+        <label>Policy Date: </label>
         <input 
           type="date"
           name="policy_date"
@@ -94,8 +96,9 @@ export default function AddPolicy({ clients, onAddPolicy }) {
           onChange={handleChange}
         />
         <br />
+        <label>Conversion Expiration: </label>
         <input 
-          type="text"
+          type="date"
           name="conversion_expiry"
           placeholder="Convsersion Expiry"
           value={formData.conversion_expiry}
@@ -118,16 +121,24 @@ export default function AddPolicy({ clients, onAddPolicy }) {
           onChange={handleChange}
         />
         <br />
-        <input 
-          type="text"
-          name="active"
-          placeholder="In Force/Not In Force"
-          value={formData.active}
-          onChange={handleChange}
-        />
+        <label>Status: </label>
+        <select name="status" onChange={handleChange}>
+          <option value="active">Active</option>
+          <option value="lapsed">Lapsed</option>
+        </select>
+
+        <br />
         <button>Add</button>
       </form>
 
     </div>
   )
 }
+
+{/* <input 
+type="text"
+name="status"
+placeholder="In Force/Not In Force"
+value={formData.active}
+onChange={handleChange}
+/> */}
