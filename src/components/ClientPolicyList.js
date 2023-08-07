@@ -4,8 +4,8 @@ import ClientPolicyPage from "./ClientPolicyPage"
 
 export default function ClientPolicyList({ clients, onUpdatePolicy }) {
   const { id } = useParams()
-  const [client, setClient] = useState(null)
-  const [clientPolicies, setClientPolicies] = useState(null)
+  // const [client, setClient] = useState(null)
+  // const [clientPolicies, setClientPolicies] = useState(null)
 
   function handleUpdatePolicy(updatedPolicy) {
     onUpdatePolicy(updatedPolicy, id)
@@ -18,7 +18,7 @@ export default function ClientPolicyList({ clients, onUpdatePolicy }) {
   return (
     <div>
       <h2>{clientFromFind.first_name} {clientFromFind.last_name}</h2>
-      <Link to={`/clients/${clientFromFind.id}/addpolicy`}>Add Policy</Link>
+      <Link to={`/clients/${clientFromFind.id}/policies/new`}>Add Policy</Link>
 
       <ul>{clientFromFind.policies.map(policy => (
           <ClientPolicyPage key={policy.policy_number} policy={policy} onUpdatePolicy={handleUpdatePolicy} />
@@ -28,12 +28,3 @@ export default function ClientPolicyList({ clients, onUpdatePolicy }) {
     </div>
   )
 }
-
-// function handleUpdatePolicy(updatedPolicy) {
-//   const updatedPolicies = clientFromFind.policies.map(policy => {
-//     if (policy.id === updatedPolicy.id) {
-//       return updatedPolicy
-//     } else return policy
-//   })
-//   setClientPolicies(updatedPolicies)
-// }

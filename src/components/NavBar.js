@@ -8,7 +8,7 @@ export default function NavBar() {
     <span className="App">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/clients">View Clients</NavLink>
-      <NavLink to="/addclient">Add Client</NavLink>
+      <NavLink to="/clients/new">Add Client</NavLink>
       <NavLink to="/insurancetotal">Total Insurance</NavLink>
     </span>
   )

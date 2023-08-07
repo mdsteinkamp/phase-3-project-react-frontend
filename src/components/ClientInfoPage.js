@@ -17,7 +17,7 @@ export default function ClientInfoPage({ client, onDeleteClient }) {
       <p>Date of Birth: {client.date_of_birth}</p>
       <p>State: {client.state}</p>
       <p>Spouse: {client.spouse_name}</p>
-      <Link to={`/clients/${client.id}`}>View Client Policies</Link>
+      <Link to={`/clients/${client.id}/policies`}>View Client Policies</Link>
       <br />
       <br />
       <button onClick={handleDeleteClick}>Remove Client</button>

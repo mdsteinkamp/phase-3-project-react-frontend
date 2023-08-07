@@ -133,11 +133,3 @@ export default function AddPolicy({ clients, onAddPolicy }) {
     </div>
   )
 }
-
-{/* <input 
-type="text"
-name="status"
-placeholder="In Force/Not In Force"
-value={formData.active}
-onChange={handleChange}
-/> */}
