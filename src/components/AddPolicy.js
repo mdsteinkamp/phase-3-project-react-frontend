@@ -19,8 +19,6 @@ export default function AddPolicy({ clients, onAddPolicy }) {
   })
 
   const clientFromFind = clients.find(client => client.id === parseInt(id))
-  console.log(formData)
-
 
   function handleChange(e) {
     const name = e.target.name
@@ -32,7 +30,6 @@ export default function AddPolicy({ clients, onAddPolicy }) {
   }
 
   function handleAddPolicy(newPolicy) {
-    console.log(newPolicy)
     onAddPolicy(newPolicy, id)
   }
 

@@ -27,7 +27,7 @@ export default function App({}) {
 
   function handleAddPolicy(newPolicy, id) {
     const selectedClient = clients.find(client => client.id == parseInt(id))
-    const updatedPolices = [...clients.policies, newPolicy]
+    const updatedPolices = [...selectedClient.policies, newPolicy]
     const updatedClient = {...selectedClient, policies: updatedPolices}
     // updatedClient.policies.push(newPolicy)
     const updatedClients = clients.map(client => client.id === updatedClient.id ? updatedClient : client)
@@ -37,7 +37,7 @@ export default function App({}) {
     //   } else return client
     // })
     setClients(updatedClients)
-    navigate(`/clients/${id}`)
+    navigate(`/clients/${id}/policies`)
   }
 
   function handleUpdatePolicy(updatedPolicy, id) {
