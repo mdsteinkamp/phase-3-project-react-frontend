@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 
 export default function AddPolicy({ clients, onAddPolicy }) {
   const { id } = useParams()
-  const [client, setClient] = useState(null)
   const [formData, setFormData] = useState({
     carrier: "",
     product:"",

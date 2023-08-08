@@ -5,11 +5,10 @@ import AddClient from './AddClient';
 import AddPolicy from './AddPolicy';
 import NavBar from './NavBar';
 import Home from './Home';
-import InsuranceTotal from './InsuranceTotal';
 import '../App.css';
 import ClientPolicyList from './ClientPolicyList';
 
-export default function App({}) {
+export default function App() {
   const [clients, setClients] = useState([])
   const [searchInput, setSearchInput] = useState("")
 
@@ -25,19 +24,13 @@ export default function App({}) {
     setClients([...clients, newClient])
   }
 
-  function handleAddPolicy(newPolicy, id) {
-    const selectedClient = clients.find(client => client.id == parseInt(id))
+  function handleAddPolicy(newPolicy) {
+    const selectedClient = clients.find(client => client.id === newPolicy.client_id)
     const updatedPolices = [...selectedClient.policies, newPolicy]
     const updatedClient = {...selectedClient, policies: updatedPolices}
-    // updatedClient.policies.push(newPolicy)
     const updatedClients = clients.map(client => client.id === updatedClient.id ? updatedClient : client)
-    // const updatedClients = clients.map(client => {
-    //   if (client.id === updatedClient.id) {
-    //     return updatedClient
-    //   } else return client
-    // })
     setClients(updatedClients)
-    navigate(`/clients/${id}/policies`)
+    navigate(`/clients/${newPolicy.client_id}/policies`)
   }
 
   function handleUpdatePolicy(updatedPolicy, id) {
