@@ -119,6 +119,7 @@ export default function AddPolicy({ clients, onAddPolicy }) {
         <br />
         <label>Status: </label>
         <select name="status" onChange={handleChange}>
+          <option value="" hidden></option>
           <option value="Active">Active</option>
           <option value="Lapsed">Lapsed</option>
         </select>

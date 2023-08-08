@@ -33,8 +33,8 @@ export default function App() {
     navigate(`/clients/${newPolicy.client_id}/policies`)
   }
 
-  function handleUpdatePolicy(updatedPolicy, id) {
-    const selectedClient = clients.find(client => client.id === parseInt(id))
+  function handleUpdatePolicy(updatedPolicy) {
+    const selectedClient = clients.find(client => client.id === updatedPolicy.client_id)
     const newPolicies = selectedClient.policies.map(policy => {
       if (policy.id === updatedPolicy.id) {
         return updatedPolicy

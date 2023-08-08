@@ -135,6 +135,7 @@ export default function ClientPolicyPage({ policy, onUpdatePolicy, onDeletePolic
         <br />
         <label>Status: </label>
         <select name="status" onChange={handleChange}>
+          <option value="" hidden></option>
           <option value="Active">Active</option>
           <option value="Lapsed">Lapsed</option>
         </select>
