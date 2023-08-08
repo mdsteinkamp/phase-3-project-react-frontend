@@ -89,7 +89,6 @@ export default function App({}) {
         <Route path="/clients/new" element={<AddClient onAddClient={handleAddClient}/>} />
         <Route path="/clients/:id/policies" element={<ClientPolicyList clients={clients} onUpdatePolicy={handleUpdatePolicy} onDeletePolicy={handleDeletePolicy}/>} />
         <Route path="/clients/:id/policies/new" element={<AddPolicy clients={clients} onAddPolicy={handleAddPolicy}/>} />
-        <Route path="/insurancetotal" element={<InsuranceTotal />} />
       </Routes>
     </div>
   );
