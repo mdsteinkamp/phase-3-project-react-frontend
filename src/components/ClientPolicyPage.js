@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ClientPolicyPage({ policy, onUpdatePolicy }) {
+export default function ClientPolicyPage({ policy, onUpdatePolicy, onDeletePolicy }) {
   const [editPolicy, setEditPolicy] = useState(false)
   const [currentPolicy, setCurrentPolicy] = useState(policy)
   const [formData, setFormData] = useState({
@@ -43,17 +43,27 @@ export default function ClientPolicyPage({ policy, onUpdatePolicy }) {
         setCurrentPolicy(updatedPolicy)
         onUpdatePolicy(updatedPolicy)
       })
+  }
 
+  function handleDeletePolicy() {
+    fetch(`http://localhost:9292/policies/${currentPolicy.id}`, {
+      method: "DELETE",
+    })
+      .then(resp => resp.json())
+      .then(deletedPolicy => onDeletePolicy(deletedPolicy))
   }
 
   return (
-    <div>
+    <div className="policyCard">
       <h2>{currentPolicy.carrier} #{currentPolicy.policy_number}</h2>
       <p>Policy Date: {currentPolicy.policy_date}</p>
       <p>Face Amount: ${currentPolicy.face_amount.toLocaleString()}</p>
       <p>Product: {currentPolicy.product}</p>
       <p>Conversion Expires: {currentPolicy.conversion_expiry}</p>
       <p>Status: {currentPolicy.status}</p>
+      <button onClick={handleDeletePolicy}>Delete Policy</button>
+      <br />
+      <br />
       <button onClick={handleEditButton}>Edit Policy</button>
       <div>
         {!editPolicy ? null : 

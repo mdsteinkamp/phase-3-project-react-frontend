@@ -8,7 +8,6 @@ export default function ClientInfoPage({ client, onDeleteClient }) {
     })
       .then(resp => resp.json())
       .then(deletedClient => onDeleteClient(deletedClient))
-
   }
 
   return (

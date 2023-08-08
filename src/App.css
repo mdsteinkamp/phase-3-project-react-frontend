@@ -9,4 +9,8 @@ a {
   margin: 10px;
 }
 
+.policyCard {
+  border: 1px solid white;
+}
+
 body {background-color: black;}

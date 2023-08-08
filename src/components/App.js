@@ -61,6 +61,14 @@ export default function App({}) {
     setClients(updatedClients)
   }
 
+  function handleDeletePolicy(deletedPolicy) {
+    const selectedClient = clients.find(client => client.id === deletedPolicy.client_id)
+    const updatedPolicies = selectedClient.policies.filter(policy => policy.id !== deletedPolicy.id)
+    const updatedClient = {...selectedClient, policies: updatedPolicies}
+    const updatedClients = clients.map(client => client.id === updatedClient.id ? updatedClient : client)
+    setClients(updatedClients)
+  }
+
   function searchClients(search) {
     setSearchInput(search)
   }
@@ -79,7 +87,7 @@ export default function App({}) {
         <Route path="/" element={<Home />} />
         <Route path="/clients" element={<ClientsList clients={shownClients} onDeleteClient={handleDeleteClient} onSearch={searchClients} onClearSearch={handleClearSearch}/>} />
         <Route path="/clients/new" element={<AddClient onAddClient={handleAddClient}/>} />
-        <Route path="/clients/:id/policies" element={<ClientPolicyList clients={clients} onUpdatePolicy={handleUpdatePolicy}/>} />
+        <Route path="/clients/:id/policies" element={<ClientPolicyList clients={clients} onUpdatePolicy={handleUpdatePolicy} onDeletePolicy={handleDeletePolicy}/>} />
         <Route path="/clients/:id/policies/new" element={<AddPolicy clients={clients} onAddPolicy={handleAddPolicy}/>} />
         <Route path="/insurancetotal" element={<InsuranceTotal />} />
       </Routes>

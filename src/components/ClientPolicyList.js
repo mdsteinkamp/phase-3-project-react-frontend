@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import ClientPolicyPage from "./ClientPolicyPage"
 
-export default function ClientPolicyList({ clients, onUpdatePolicy }) {
+export default function ClientPolicyList({ clients, onUpdatePolicy, onDeletePolicy }) {
   const { id } = useParams()
-  // const [client, setClient] = useState(null)
-  // const [clientPolicies, setClientPolicies] = useState(null)
 
   function handleUpdatePolicy(updatedPolicy) {
     onUpdatePolicy(updatedPolicy, id)
+  }
+
+  function handleDeletePolicy(deletedPolicy) {
+    onDeletePolicy(deletedPolicy)
   }
 
   const clientFromFind = clients.find(client => client.id === parseInt(id))
@@ -21,7 +23,7 @@ export default function ClientPolicyList({ clients, onUpdatePolicy }) {
       <Link to={`/clients/${clientFromFind.id}/policies/new`}>Add Policy</Link>
 
       <ul>{clientFromFind.policies.map(policy => (
-          <ClientPolicyPage key={policy.policy_number} policy={policy} onUpdatePolicy={handleUpdatePolicy} />
+          <ClientPolicyPage key={policy.policy_number} policy={policy} onUpdatePolicy={handleUpdatePolicy} onDeletePolicy={handleDeletePolicy} />
       ))}</ul>
 
       <h2>Total Insurance: {clientFromFind.policies.map(p => p.face_amount).reduce((a, c) => a + c, 0)}</h2>
