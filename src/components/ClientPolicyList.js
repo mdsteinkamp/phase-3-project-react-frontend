@@ -26,7 +26,7 @@ export default function ClientPolicyList({ clients, onUpdatePolicy, onDeletePoli
           <ClientPolicyPage key={policy.policy_number} policy={policy} onUpdatePolicy={handleUpdatePolicy} onDeletePolicy={handleDeletePolicy} />
       ))}</ul>
 
-      <h2>Total Insurance: {clientFromFind.policies.map(p => p.face_amount).reduce((a, c) => a + c, 0)}</h2>
+      <h2>Total Insurance: {clientFromFind.policies.filter(p => p.status === "Active").map(p => p.face_amount).reduce((a, c) => a + c, 0)}</h2>
     </div>
   )
 }

@@ -35,17 +35,9 @@ export default function App() {
 
   function handleUpdatePolicy(updatedPolicy) {
     const selectedClient = clients.find(client => client.id === updatedPolicy.client_id)
-    const newPolicies = selectedClient.policies.map(policy => {
-      if (policy.id === updatedPolicy.id) {
-        return updatedPolicy
-      } else return policy
-    })
+    const newPolicies = selectedClient.policies.map(policy => policy.id === updatedPolicy.id ? updatedPolicy : policy)
     const updatedClient = {...selectedClient, policies: newPolicies}
-    const updatedClients = clients.map(client => {
-      if (client.id === updatedClient.id) {
-        return updatedClient
-      } else return client
-    })
+    const updatedClients = clients.map(client => client.id === updatedPolicy.client_id ? updatedClient : client)
     setClients(updatedClients)
   }
 
